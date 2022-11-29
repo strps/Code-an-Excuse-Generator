@@ -17,12 +17,14 @@ window.onload = function() {
     "while I was praying"
   ];
 
-  var excuseText = "";
-  excuseText += who[Math.floor(Math.random() * 4)] + " ";
-  excuseText += action[Math.floor(Math.random() * 4)] + " ";
-  excuseText += what[Math.floor(Math.random() * 3)] + " ";
-  excuseText += when[Math.floor(Math.random() * 5)];
+  var array1 = [who, action, what, when];
+
+  var excuseText = array1.reduce((a, c) => a + "  " + getRandom(c), "");
 
   var excuse = document.getElementById("excuse");
   excuse.innerHTML = excuseText;
 };
+
+function getRandom(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
